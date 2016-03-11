@@ -38,13 +38,19 @@ class ossec::params {
         $client_service_name    = 'ossec-agent'
         $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
         $client_ossec_conf_tmpl = 'ossec/ossec.erb'
-      }
-      if $facts['os']['release']['major'] == '8' {
+      } elsif $facts['os']['release']['major'] == '8' {
         $client_package_name    = 'ossec-hids-agent'
         $client_service_name    = 'ossec'
         $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
         $client_ossec_conf_tmpl = 'ossec/ossec.erb'
       }
+      else {
+        $client_package_name    = 'ossec-agent'
+        $client_service_name    = 'ossec-agent'
+        $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
+        $client_ossec_conf_tmpl = 'ossec/ossec.erb'
+      }
+
 
     }
     default: {
