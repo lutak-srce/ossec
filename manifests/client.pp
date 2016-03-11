@@ -14,15 +14,27 @@ class ossec::client (
   $service_name    = $ossec::client_service_name,
   $ossec_conf      = $ossec::client_ossec_conf,
   $ossec_conf_tmpl = $ossec::client_ossec_conf_tmpl,
+  $client_provider = $ossec::client_provider,
 ) inherits ossec {
   package { $package_name :
     ensure   => present,
   }
-  service { $service_name :
-    ensure   => running,
-    enable   => true,
-    require  => Package[$package_name],
+
+  if $client_provider {
+    service { $service_name :
+      ensure   => running,
+      enable   => true,
+      require  => Package[$package_name],
+      provider => $client_provider,
+    }
+  } else {
+    service { $service_name :
+      ensure   => running,
+      enable   => true,
+      require  => Package[$package_name],
+    }
   }
+
   file { $ossec_conf :
     ensure  => present,
     content => template($ossec_conf_tmpl),

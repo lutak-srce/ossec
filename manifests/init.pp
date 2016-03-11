@@ -16,6 +16,7 @@ class ossec (
   $client_ip                = $ossec::params::client_ip,
   $client_name              = $ossec::params::client_name,
   $client_package_name      = $ossec::params::client_package_name,
+  $client_provider          = $ossec::params::client_provider,
   $package_ensure           = $ossec::params::package_ensure,
   $client_service_name      = $ossec::params::client_service_name,
   $client_ossec_conf        = $ossec::params::client_ossec_conf,

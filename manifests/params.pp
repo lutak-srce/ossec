@@ -18,6 +18,12 @@ class ossec::params {
   $client_ip        = 'nokey_usehiera'
   $client_name      = $::fqdn
 
+  if $facts['os']['family'] == 'RedHat' and $facts['os']['release']['major'] == '7' {
+    $client_provider  = redhat }
+  else {
+    $client_provider  = undef }
+  
+
   case $::osfamily {
     /(RedHat|redhat)/: {
       $client_package_name    = 'ossec-hids-client'
@@ -26,10 +32,20 @@ class ossec::params {
       $client_ossec_conf_tmpl = 'ossec/ossec-agent.erb'
     }
     /(Debian|debian|Ubuntu|ubuntu)/: {
-      $client_package_name    = 'ossec-agent'
-      $client_service_name    = 'ossec-agent'
-      $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
-      $client_ossec_conf_tmpl = 'ossec/ossec.erb'
+
+      if $facts['os']['release']['major'] =~ /[6-7]/ {
+        $client_package_name    = 'ossec-agent'
+        $client_service_name    = 'ossec-agent'
+        $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
+        $client_ossec_conf_tmpl = 'ossec/ossec.erb'
+      }
+      if $facts['os']['release']['major'] == '8' {
+        $client_package_name    = 'ossec-hids-agent'
+        $client_service_name    = 'ossec'
+        $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
+        $client_ossec_conf_tmpl = 'ossec/ossec.erb'
+      }
+
     }
     default: {
       fail("Unsupported osfamily: ${::osfamily} operatingsystem: ${::operatingsystem}, module ${module_name} currently only supports osfamily RedHat and Debian")
