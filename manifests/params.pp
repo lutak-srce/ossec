@@ -31,14 +31,8 @@ class ossec::params {
       $client_ossec_conf      = '/var/ossec/etc/ossec-agent.conf'
       $client_ossec_conf_tmpl = 'ossec/ossec-agent.erb'
     }
-    /(Debian|debian|Ubuntu|ubuntu)/: {
-
-      if $facts['os']['release']['major'] =~ /[6-7]/ {
-        $client_package_name    = 'ossec-agent'
-        $client_service_name    = 'ossec-agent'
-        $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
-        $client_ossec_conf_tmpl = 'ossec/ossec.erb'
-      } elsif $facts['os']['release']['major'] == '8' {
+    /(Debian|debian)/: {
+      if $facts['os']['release']['major'] == '8' {
         $client_package_name    = 'ossec-hids-agent'
         $client_service_name    = 'ossec'
         $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
@@ -50,8 +44,12 @@ class ossec::params {
         $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
         $client_ossec_conf_tmpl = 'ossec/ossec.erb'
       }
-
-
+    }
+    /(Ubuntu|ubuntu)/: {
+      $client_package_name    = 'ossec-agent'
+      $client_service_name    = 'ossec-agent'
+      $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
+      $client_ossec_conf_tmpl = 'ossec/ossec.erb'
     }
     default: {
       fail("Unsupported osfamily: ${::osfamily} operatingsystem: ${::operatingsystem}, module ${module_name} currently only supports osfamily RedHat and Debian")
