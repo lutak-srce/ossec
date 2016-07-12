@@ -32,7 +32,7 @@ class ossec::params {
       $client_ossec_conf_tmpl = 'ossec/ossec-agent.erb'
     }
     /(Debian|debian)/: {
-      if $facts['os']['release']['major'] == '8' {
+      if $facts['os']['distro']['codename'] == 'jessie' {
         $client_package_name    = 'ossec-hids-agent'
         $client_service_name    = 'ossec'
         $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
