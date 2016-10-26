@@ -29,9 +29,9 @@ class ossec::client (
     }
   } else {
     service { $service_name :
-      ensure   => running,
-      enable   => true,
-      require  => Package[$package_name],
+      ensure  => running,
+      enable  => true,
+      require => Package[$package_name],
     }
   }
 
