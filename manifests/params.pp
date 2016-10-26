@@ -22,7 +22,6 @@ class ossec::params {
     $client_provider  = redhat }
   else {
     $client_provider  = undef }
-  
 
   case $::osfamily {
     /(RedHat|redhat)/: {
