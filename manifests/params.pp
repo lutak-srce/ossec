@@ -37,6 +37,12 @@ class ossec::params {
         $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
         $client_ossec_conf_tmpl = 'ossec/ossec.erb'
       }
+      elsif $facts['os']['distro']['codename'] == 'squeeze' {
+        $client_package_name    = 'ossec-agent'
+        $client_service_name    = 'ossec-agent'
+        $client_ossec_conf      = '/var/ossec/etc/ossec.conf'
+        $client_ossec_conf_tmpl = 'ossec/squeeze.erb'
+      }
       else {
         $client_package_name    = 'ossec-agent'
         $client_service_name    = 'ossec-agent'
