@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe 'ossec::client', :type => :class do
+describe 'ossec', :type => :class do
   let(:params) {{
     :server_ip   => '127.0.0.1',
     :client_id   => '1',
@@ -7,6 +7,7 @@ describe 'ossec::client', :type => :class do
     :client_ip   => '127.0.0.1',
     :client_key  => 'randomkey',
   }}
+describe 'ossec::client', :type => :class do
   context "on a CentOS OS" do
     it { is_expected.to compile.with_all_deps }
 
@@ -61,4 +62,5 @@ describe 'ossec::client', :type => :class do
     end
 
   end
+end
 end
