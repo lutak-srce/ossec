@@ -1,5 +1,12 @@
 require 'spec_helper'
 describe 'ossec::client', :type => :class do
+  let(:params) {{
+    :server_ip   => '127.0.0.1',
+    :client_id   => '1',
+    :client_name => 'localhost',
+    :client_ip   => '127.0.0.1',
+    :client_key  => 'randomkey',
+  }}
   context "on a CentOS OS" do
     it { is_expected.to compile.with_all_deps }
 
