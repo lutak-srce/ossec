@@ -12,6 +12,7 @@ class ossec::client (
   String               $ossec_conf_group,
   String               $ossec_conf_mode,
   Stdlib::Absolutepath $client_keys_file,
+  String               $client_keys_ensure,
   String               $client_keys_epp,
   String               $client_keys_owner,
   String               $client_keys_group,
