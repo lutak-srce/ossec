@@ -1,6 +1,6 @@
 {
   "name": "srce-ossec",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "author": "znikac@srce.hr",
   "summary": "ossec pupet module",
   "license": "Apache-2.0",
