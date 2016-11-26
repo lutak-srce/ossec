@@ -1,0 +1,4 @@
+---
+ossec::client::package_name: 'ossec-hids-agent'
+ossec::client::service_name: 'ossec'
+ossec::client::ossec_conf_file: '/var/ossec/etc/ossec.conf'
