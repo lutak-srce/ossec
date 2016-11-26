@@ -17,6 +17,7 @@ RSpec.configure do |c|
     hosts.each do |host|
       # dependency
       on host, puppet('module','install','puppetlabs-stdlib')
+      on host, puppet('module','install','puppetlabs-apt')
       copy_module_to(host, :source => module_root, :module_name => 'ossec')
     end
 
