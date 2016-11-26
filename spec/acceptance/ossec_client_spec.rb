@@ -27,11 +27,13 @@ describe 'ossec::client class' do
             before   => Class['ossec::client'],
           }
         }
-        class { 'ossec::client': 
+        class { 'ossec': 
           client_id => '1',
           client_ip => '10.0.0.1',
           client_key => 'randomkey',
+          before   => Class['ossec::client'],
         }
+        class { 'ossec::client': }
       EOS
 
       # Run it twice and test for idempotency
