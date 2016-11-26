@@ -25,7 +25,7 @@ describe 'ossec::client class' do
 	  Exec["apt_update"] -> Package <| |>
         } elsif $::osfamily == 'RedHat' {
          yumrepo { 'ossec':
-          baseurl  => 'http://ossec.wazuh.com/el/$releasever/$basearch',
+          baseurl  => 'http://www2.atomicorp.com/channels/atomic/centos/$releasever/$basearch',
             enabled  => 1,
             gpgcheck => 0,
             before   => Class['ossec::client'],
