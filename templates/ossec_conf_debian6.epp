@@ -1,6 +1,6 @@
 <ossec_config>
   <client>
-    <server-ip><%= @server_ip %></server-ip>
+    <server-ip><%= $ossec::server_ip %></server-ip>
   </client>
 
   <syscheck>

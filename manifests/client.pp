@@ -1,57 +1,55 @@
-# Class: ossec::client
-#
-# This module manages ossec client
-#
-# Requires:
-#
-#
-
-# Sample Usage:
-#   include ossec::client
-#
 class ossec::client (
-  $package_name    = $ossec::client_package_name,
-  $service_name    = $ossec::client_service_name,
-  $ossec_conf      = $ossec::client_ossec_conf,
-  $ossec_conf_tmpl = $ossec::client_ossec_conf_tmpl,
-  $client_provider = $ossec::client_provider,
+  String               $package_name,
+  String               $package_ensure,
+  String               $service_name,
+  Boolean              $service_enable,
+  String               $service_ensure,
+  Optional[String]     $service_provider,
+  Stdlib::Absolutepath $ossec_conf_file,
+  String               $ossec_conf_ensure,
+  String               $ossec_conf_epp,
+  String               $ossec_conf_owner,
+  String               $ossec_conf_group,
+  String               $ossec_conf_mode,
+  Stdlib::Absolutepath $client_keys_file,
+  String               $client_keys_ensure,
+  String               $client_keys_epp,
+  String               $client_keys_owner,
+  String               $client_keys_group,
+  String               $client_keys_mode,
 ) inherits ossec {
-  package { $package_name :
-    ensure   => present,
+
+  package { $ossec::client::package_name:
+    ensure => $ossec::client::package_ensure,
   }
 
-  if $client_provider {
-    service { $service_name :
-      ensure   => running,
-      enable   => true,
-      require  => Package[$package_name],
-      provider => $client_provider,
-    }
-  } else {
-    service { $service_name :
-      ensure  => running,
-      enable  => true,
-      require => Package[$package_name],
-    }
+  service { $ossec::client::service_name:
+    ensure     => $ossec::client::service_ensure,
+    enable     => $ossec::client::service_enable,
+    name       => $ossec::client::service_name,
+    provider   => $ossec::client::service_provider,
+    hasstatus  => true,
+    hasrestart => true,
+    require    => Package[$ossec::client::package_name],
   }
 
-  file { $ossec_conf :
-    ensure  => present,
-    content => template($ossec_conf_tmpl),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    require => Package[$package_name],
-    notify  => Service[$service_name],
+  file { $ossec::client::ossec_conf_file:
+    ensure  => $ossec::client::ossec_conf_ensure,
+    content => epp($ossec::client::ossec_conf_epp),
+    owner   => $ossec::client::ossec_conf_owner,
+    group   => $ossec::client::ossec_conf_group,
+    mode    => $ossec::client::ossec_conf_mode,
+    require => Package[$ossec::client::package_name],
+    notify  => Service[$ossec::client::service_name],
   }
-  file { '/var/ossec/etc/client.keys':
-    ensure  => present,
-    content => template('ossec/client_keys.erb'),
-    owner   => 'ossec',
-    group   => 'ossec',
-    mode    => '0400',
-    require => Package[$package_name],
-    notify  => Service[$service_name],
+
+  file { $ossec::client::client_keys_file:
+    ensure  => $ossec::client::client_keys_ensure,
+    content => epp($ossec::client::client_keys_epp),
+    owner   => $ossec::client::client_keys_owner,
+    group   => $ossec::client::client_keys_group,
+    mode    => $ossec::client::client_keys_mode,
+    require => Package[$ossec::client::package_name],
+    notify  => Service[$ossec::client::service_name],
   }
 }
-
