@@ -1,0 +1,54 @@
+{
+  "name": "srce-ossec",
+  "version": "0.1.0",
+  "author": "znikac@srce.hr",
+  "summary": "ossec pupet module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/lutak-srce/ossec",
+  "project_page": "https://github.com/lutak-srce/ossec",
+  "issues_url": "https://github.com/lutak-srce/ossec/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.13.1 < 5.0.0"}
+  ],
+  "data_provider": "hiera",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "12.04",
+        "14.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.5.0 < 5.0.0"
+    }
+  ],
+  "description": "Module for ossec configuration"
+}
