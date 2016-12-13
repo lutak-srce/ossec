@@ -6,6 +6,10 @@ hierarchy:
     backend: yaml
     path: "%{facts.os.name}-%{facts.os.release.full}"
 
+  - name: "Major Version and Architecture"
+    backend: yaml
+    path: "%{facts.os.name}-%{facts.os.release.major}-%{facts.os.architecture}"
+
   - name: "Major Version"
     backend: yaml
     path: "%{facts.os.name}-%{facts.os.release.major}"
