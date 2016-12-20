@@ -16,7 +16,7 @@ class ossec::server (
   String               $local_decoder_owner,
   String               $local_decoder_group,
   String               $local_decoder_mode,
-) inherits ossec {
+) {
 
   package { $ossec::server::package_name:
     ensure => $ossec::server::package_ensure,
