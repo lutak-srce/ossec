@@ -2,3 +2,5 @@
 ossec::client::package_name: 'ossec-hids-agent'
 ossec::client::service_name: 'ossec'
 ossec::client::ossec_conf_file: '/var/ossec/etc/ossec.conf'
+ossec::server::service_provider: 'systemd'
+ossec::server::package_name: 'ossec-hids'
