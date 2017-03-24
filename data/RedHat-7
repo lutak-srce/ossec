@@ -1,2 +1,0 @@
----
-ossec::client::service_provider: 'redhat'
