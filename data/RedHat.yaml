@@ -1,0 +1,4 @@
+---
+ossec::client::service_provider: 'redhat'
+ossec::client::service_name: 'ossec-hids-agent'
+ossec::server::service_name: 'ossec-hids'
