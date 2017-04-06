@@ -24,7 +24,7 @@ ossec::client::client_keys_group: 'ossec'
 ossec::client::client_keys_mode: '0400'
 ossec::server::package_name: 'ossec-hids'
 ossec::server::package_ensure: 'present'
-ossec::server::service_name: 'ossec-hids'
+ossec::server::service_name: 'ossec'
 ossec::server::service_enable: true
 ossec::server::service_ensure: 'running'
 ossec::server::agent_conf_file: '/var/ossec/etc/shared/agent.conf'
