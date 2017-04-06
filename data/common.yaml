@@ -27,6 +27,7 @@ ossec::server::package_ensure: 'present'
 ossec::server::service_name: 'ossec'
 ossec::server::service_enable: true
 ossec::server::service_ensure: 'running'
+ossec::server::service_provider: ~
 ossec::server::agent_conf_file: '/var/ossec/etc/shared/agent.conf'
 ossec::server::agent_conf_ensure: 'file'
 ossec::server::agent_conf_src: 'puppet:///modules/ossec/agent.conf'
@@ -38,4 +39,3 @@ ossec::server::local_decoder_src: 'puppet:///modules/ossec/local_decoder.xml'
 ossec::server::local_decoder_owner: 'root'
 ossec::server::local_decoder_group: 'root'
 ossec::server::local_decoder_mode: '0644'
-ossec::server::service_provider: ~
