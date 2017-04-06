@@ -38,3 +38,4 @@ ossec::server::local_decoder_src: 'puppet:///modules/ossec/local_decoder.xml'
 ossec::server::local_decoder_owner: 'root'
 ossec::server::local_decoder_group: 'root'
 ossec::server::local_decoder_mode: '0644'
+ossec::server::service_provider: ~
