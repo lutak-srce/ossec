@@ -1,4 +1,9 @@
 class ossec::client (
+  String               $server_ip,
+  String               $client_name,
+  Optional[String]     $client_id,
+  Optional[String]     $client_ip,
+  Optional[String]     $client_key,
   String               $package_name,
   String               $package_ensure,
   String               $service_name,
@@ -22,7 +27,7 @@ class ossec::client (
   String               $archives_dir_owner,
   String               $archives_dir_group,
   String               $archives_dir_mode,
-) inherits ossec {
+) {
 
   package { $ossec::client::package_name:
     ensure => $ossec::client::package_ensure,

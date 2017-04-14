@@ -1,1 +1,1 @@
-<%= $ossec::client_id %> <%= $ossec::client_name %> <%= $ossec::client_ip %> <%= $ossec::client_key %>
+<%= $ossec::client::client_id %> <%= $ossec::client::client_name %> <%= $ossec::client::client_ip %> <%= $ossec::client::client_key %>

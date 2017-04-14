@@ -1,6 +1,6 @@
 <ossec_config>
   <client>
-    <server-ip><%= $ossec::server_ip %></server-ip>
+    <server-ip><%= $ossec::client::server_ip %></server-ip>
     <config-profile><%= $facts[os][family] %></config-profile>
   </client>
 </ossec_config>

@@ -1,9 +1,9 @@
 ---
-ossec::server_ip: '127.0.0.1'
-ossec::client_id: ~
-ossec::client_name: "%{facts.networking.fqdn}"
-ossec::client_ip: ~
-ossec::client_key: ~
+ossec::client::server_ip: '127.0.0.1'
+ossec::client::client_id: ~
+ossec::client::client_name: "%{facts.networking.fqdn}"
+ossec::client::client_ip: ~
+ossec::client::client_key: ~
 ossec::client::package_name: 'ossec-hids-agent'
 ossec::client::package_ensure: 'present'
 ossec::client::service_name: 'ossec'
