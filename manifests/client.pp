@@ -17,6 +17,11 @@ class ossec::client (
   String               $client_keys_owner,
   String               $client_keys_group,
   String               $client_keys_mode,
+  Stdlib::Absolutepath $archives_dir,
+  String               $archives_dir_ensure,
+  String               $archives_dir_owner,
+  String               $archives_dir_group,
+  String               $archives_dir_mode,
 ) inherits ossec {
 
   package { $ossec::client::package_name:
@@ -51,5 +56,12 @@ class ossec::client (
     mode    => $ossec::client::client_keys_mode,
     require => Package[$ossec::client::package_name],
     notify  => Service[$ossec::client::service_name],
+  }
+
+  file { $ossec::client::archives_dir:
+    ensure => $ossec::client::archives_dir_ensure,
+    owner  => $ossec::client::archives_dir_owner,
+    group  => $ossec::client::archives_dir_group,
+    mode   => $ossec::client::archives_dir_mode,
   }
 }
