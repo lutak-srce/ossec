@@ -64,9 +64,10 @@ class ossec::client (
   }
 
   file { $ossec::client::archives_dir:
-    ensure => $ossec::client::archives_dir_ensure,
-    owner  => $ossec::client::archives_dir_owner,
-    group  => $ossec::client::archives_dir_group,
-    mode   => $ossec::client::archives_dir_mode,
+    ensure  => $ossec::client::archives_dir_ensure,
+    owner   => $ossec::client::archives_dir_owner,
+    group   => $ossec::client::archives_dir_group,
+    mode    => $ossec::client::archives_dir_mode,
+    require => Package[$ossec::client::package_name],
   }
 }
