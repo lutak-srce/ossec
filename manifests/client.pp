@@ -27,6 +27,12 @@ class ossec::client (
   String               $archives_dir_owner,
   String               $archives_dir_group,
   String               $archives_dir_mode,
+  Stdlib::Absolutepath $agent_conf_file,
+  String               $agent_conf_ensure,
+  String               $agent_conf_src,
+  String               $agent_conf_owner,
+  String               $agent_conf_group,
+  String               $agent_conf_mode,
 ) {
 
   package { $ossec::client::package_name:
@@ -70,4 +76,15 @@ class ossec::client (
     mode    => $ossec::client::archives_dir_mode,
     require => Package[$ossec::client::package_name],
   }
+
+  file { $ossec::client::agent_conf_file:
+    ensure  => $ossec::client::agent_conf_ensure,
+    source  => $ossec::client::agent_conf_src,
+    owner   => $ossec::client::agent_conf_owner,
+    group   => $ossec::client::agent_conf_group,
+    mode    => $ossec::client::agent_conf_mode,
+    require => Package[$ossec::client::package_name],
+  }
+
 }
+
